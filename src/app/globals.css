@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --forest: #15372d;
+  --evergreen: #0d241d;
+  --sand: #e8ddc8;
+  --ivory: #faf8f3;
+  --sage: #a7b6a1;
+  --charcoal: #242824;
+  --white: #ffffff;
+  --ink-muted: #59645d;
+  --line: #deded3;
+  --background: var(--ivory);
+  --foreground: var(--charcoal);
+  --content-width: 80rem;
+}
+
+@theme inline {
+  --color-forest: var(--forest);
+  --color-evergreen: var(--evergreen);
+  --color-sand: var(--sand);
+  --color-ivory: var(--ivory);
+  --color-sage: var(--sage);
+  --color-charcoal: var(--charcoal);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), "Avenir Next", Avenir, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4 { font-family: var(--font-display), Georgia, serif; font-weight: 600; }
+a { text-decoration: none; }
+button, input, textarea, select { font: inherit; }
+
+:focus-visible { outline: 3px solid #839c7d; outline-offset: 3px; }
+::selection { background: var(--sand); color: var(--evergreen); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
