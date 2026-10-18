@@ -33,6 +33,10 @@ function getBookingNote(entry: CatalogEntry): string {
   return 'This offering is not currently accepting booking inquiries.';
 }
 
+function formatAmount(amount: number, currency: string): string {
+  return new Intl.NumberFormat('en-KE', { style: 'currency', currency, maximumFractionDigits: 0 }).format(amount);
+}
+
 export function CatalogDetailView({
   entry,
   collectionHref,
@@ -128,6 +132,31 @@ export function CatalogDetailView({
             {exclusions.length > 0 && <InfoList title="Not included" items={exclusions} />}
             {entry.kind === 'stay' && entry.amenities && entry.amenities.length > 0 && <InfoList title="Amenities" items={entry.amenities} />}
             {entry.kind === 'package' && entry.packageDetails.optionalAddOns && entry.packageDetails.optionalAddOns.length > 0 && <InfoList title="Optional add-ons" items={entry.packageDetails.optionalAddOns} />}
+          </Container>
+        </section>
+      )}
+
+      {entry.priceOptions && entry.priceOptions.length > 0 && (
+        <section className="bg-[#f0eee7] py-12 sm:py-16">
+          <Container>
+            <h2 className="font-display text-4xl text-charcoal">Packages and prices</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#59645d]">Prices are shown for the stated basis. Availability and final arrangements are confirmed after inquiry.</p>
+            <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {entry.priceOptions.map((option) => (
+                <article key={option.name} className="border border-[#dcded4] bg-white p-5">
+                  <h3 className="font-display text-2xl text-charcoal">{option.name}</h3>
+                  <p className="mt-2 text-lg font-semibold text-forest">{formatAmount(option.amount, option.currency)}</p>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-[#59645d]">{option.basis}</p>
+                  {option.description && <p className="mt-4 text-sm leading-6 text-[#59645d]">{option.description}</p>}
+                  {option.inclusions && option.inclusions.length > 0 && (
+                    <ul className="mt-4 grid gap-2 text-sm leading-6 text-[#46544b]">
+                      {option.inclusions.map((inclusion) => <li key={inclusion}>• {inclusion}</li>)}
+                    </ul>
+                  )}
+                  {option.saving && <p className="mt-4 text-sm font-semibold text-forest">{option.saving}</p>}
+                </article>
+              ))}
+            </div>
           </Container>
         </section>
       )}

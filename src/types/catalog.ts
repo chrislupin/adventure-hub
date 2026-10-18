@@ -13,6 +13,16 @@ export type PricingInformation =
   | { method: 'fixed'; amount: number; currency: string; verified: true; basis: string }
   | { method: 'from'; amount: number; currency: string; verified: true; basis: string };
 
+export type PriceOption = {
+  name: string;
+  amount: number;
+  currency: string;
+  basis: string;
+  description?: string;
+  inclusions?: readonly string[];
+  saving?: string;
+};
+
 export type CatalogBase = {
   id: string;
   slug: string;
@@ -25,6 +35,7 @@ export type CatalogBase = {
   location?: string;
   status: PublicationStatus;
   pricing: PricingInformation;
+  priceOptions?: readonly PriceOption[];
   features?: readonly string[];
   inclusions?: readonly string[];
   duration?: string;

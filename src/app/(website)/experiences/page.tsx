@@ -13,7 +13,7 @@ export default function ExperiencesPage() {
 		<ServiceCatalogPage
 			eyebrow="Outdoor experiences"
 			title="Find your kind of adventure."
-			description="Explore quad biking, hot-air balloon experiences and nature-focused getaways. Locations, operators, requirements, dates and pricing are confirmed individually by inquiry."
+			description="Explore quad biking and Adventure Hub Longonot activities including horse riding, bonfires, pool access, sauna sessions, nature walks and cycling. Availability and final arrangements are confirmed by inquiry."
 			entries={getPublishedExperiences()}
 			detailPath="/experiences"
 			searchLabel="Search experiences"

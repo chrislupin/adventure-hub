@@ -13,7 +13,7 @@ export default function StaysPage() {
 		<ServiceCatalogPage
 			eyebrow="Accommodation"
 			title="Stay somewhere special."
-			description="Explore cabin accommodation and ask about half-board or full-board meal plans. No individual property, location, capacity, facilities, availability or rates are published yet; these details are confirmed for each inquiry."
+			description="Explore luxury cabin packages at Adventure Hub Longonot, with half-board and full-board options. Prices are shown for the stated basis; availability and final arrangements are confirmed by inquiry."
 			entries={getPublishedStays()}
 			detailPath="/stays"
 			searchLabel="Search stays"
