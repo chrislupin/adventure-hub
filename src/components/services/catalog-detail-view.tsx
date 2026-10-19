@@ -48,7 +48,8 @@ export function CatalogDetailView({
   collectionLabel: string;
   relatedEntries: readonly CatalogEntry[];
 }) {
-  const images = [...(entry.coverImage ? [entry.coverImage] : []), ...(entry.gallery ?? [])];
+  const images = [...(entry.coverImage ? [entry.coverImage] : []), ...(entry.gallery ?? [])]
+    .filter((image, index, collection) => collection.findIndex((candidate) => candidate.src === image.src) === index);
   const facts: { label: string; value: string }[] = [{ label: 'Category', value: entry.category }];
   const price = formatPrice(entry.pricing);
 

@@ -82,7 +82,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-x-5 gap-y-2 md:grid-cols-12 md:gap-x-6">
             {homeContent.services.map((service) => <HomeServiceCard key={service.title} service={service} />)}
           </div>
-          <p className="mt-6 text-xs leading-5 text-[#68726b]">Editorial photographs are illustrative and do not represent confirmed Adventure Hub properties, vehicles, operators or availability.</p>
+          <p className="mt-6 text-xs leading-5 text-[#68726b]">Specific operators, vehicles and availability are confirmed by inquiry.</p>
         </Container>
       </section>
 
@@ -94,7 +94,6 @@ export default function HomePage() {
               <article key={feature.title} className="grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-20">
                 <div className={`relative aspect-[1.2/1] overflow-hidden bg-sage/25 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
                   <Image src={feature.image.src} alt={feature.image.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
-                  <span className="absolute bottom-3 left-3 bg-evergreen/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white">Illustrative photo</span>
                 </div>
                 <div className={index % 2 === 1 ? 'md:order-1' : ''}>
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">{feature.eyebrow}</p>
@@ -115,11 +114,39 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <section className="bg-[#e8ede3] py-20 sm:py-24 lg:py-28">
+        <Container>
+          <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <SectionHeading eyebrow={homeContent.showcase.eyebrow} title={homeContent.showcase.title} />
+            <p className="max-w-md text-sm leading-7 text-[#59645d]">{homeContent.showcase.description}</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-12 md:grid-rows-2 md:gap-5">
+            {homeContent.showcase.items.map((item) => (
+              <figure key={item.title} className={`group relative overflow-hidden bg-forest ${item.layout}`}>
+                <div className={`relative ${item.ratio}`}>
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(min-width: 768px) 60vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-evergreen/75 via-evergreen/10 to-transparent" />
+                </div>
+                <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
+                  <h3 className="mt-2 font-display text-3xl leading-none sm:text-4xl">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-white/80">{item.description}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       <section className="bg-evergreen py-20 text-white sm:py-24">
         <Container className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
           <div className="relative min-h-[22rem] overflow-hidden sm:min-h-[28rem]">
             <Image src={homeContent.packages.image.src} alt={homeContent.packages.image.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
-            <span className="absolute bottom-3 left-3 bg-evergreen/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white">Illustrative photo</span>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sand">{homeContent.packages.eyebrow}</p>

@@ -17,9 +17,6 @@ export function HomeServiceCard({ service }: { service: HomeService }) {
             sizes="(min-width: 1280px) 40vw, (min-width: 768px) 50vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.035]"
           />
-          <span className="absolute bottom-3 left-3 bg-evergreen/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white">
-            Illustrative photo
-          </span>
         </div>
         <div className="border-b border-[#dcded4] py-5 sm:py-6">
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-forest">{service.category}</p>

@@ -31,8 +31,8 @@ export const homeContent = {
       description: 'Leave the usual route behind. Ask about available dates, routes and requirements for a quad biking experience.',
       href: '/experiences',
       image: {
-        src: '/images/quad-biking-illustrative.jpg',
-        alt: 'A rider takes an all-terrain vehicle across an open desert landscape',
+        src: '/images/adventure-hub/images/quad%20bike.jpeg',
+        alt: 'Guests pause with quad bikes at a scenic viewpoint',
       },
       layout: 'md:col-span-6 xl:col-span-5',
       imageRatio: 'aspect-[1.35/1] xl:aspect-[1.24/1]',
@@ -55,8 +55,8 @@ export const homeContent = {
       description: 'Make space for a slower stay. Confirm dates, amenities and meal-plan details with the team.',
       href: '/stays',
       image: {
-        src: '/images/cabin-exterior-illustrative.jpg',
-        alt: 'A wooden cabin beside a pond, surrounded by trees',
+        src: '/images/adventure-hub/images/cabin%201.jpeg',
+        alt: 'A-frame cabins set among leafy gardens',
       },
       layout: 'md:col-span-6 xl:col-span-3',
       imageRatio: 'aspect-[1.35/1] xl:aspect-[0.78/1]',
@@ -94,8 +94,8 @@ export const homeContent = {
       href: '/stays',
       linkLabel: 'Browse stays',
       image: {
-        src: '/images/cabin-interior-illustrative.jpg',
-        alt: 'A modern cabin interior opening onto a deck and green forest',
+        src: '/images/adventure-hub/images/cabin%20living%20room.jpeg',
+        alt: 'A warm cabin living room surrounded by garden views',
       },
       highlights: ['Cabin accommodation', 'Half-board or full-board options', 'Details confirmed for your dates'],
     },
@@ -125,6 +125,37 @@ export const homeContent = {
       { name: 'Full board', description: 'Confirm the specific meal inclusions before booking.' },
     ],
     publishedPackages: [] as readonly HomePackage[],
+  },
+  showcase: {
+    eyebrow: 'A closer look',
+    title: 'Cabin calm, garden light and a little more outside.',
+    description: 'A glimpse of the atmosphere waiting behind your next getaway inquiry.',
+    items: [
+      {
+        title: 'Garden cabins',
+        description: 'A quiet arrival among the trees.',
+        src: '/images/adventure-hub/images/cabin%202.jpeg',
+        alt: 'The entrance to an A-frame cabin in a leafy garden',
+        layout: 'md:col-span-7 md:row-span-2',
+        ratio: 'aspect-[4/3] md:aspect-auto md:h-full',
+      },
+      {
+        title: 'Poolside pause',
+        description: 'A cool, private corner of the garden.',
+        src: '/images/adventure-hub/images/swimming%20pool.jpeg',
+        alt: 'A small swimming pool framed by tropical planting',
+        layout: 'md:col-span-5',
+        ratio: 'aspect-[4/3]',
+      },
+      {
+        title: 'Inside the stay',
+        description: 'Light-filled spaces that open to green.',
+        src: '/images/adventure-hub/images/cabin%20interior.jpeg',
+        alt: 'A covered sitting area looking out onto a green garden',
+        layout: 'md:col-span-5',
+        ratio: 'aspect-[4/3]',
+      },
+    ],
   },
   reasons: [
     {

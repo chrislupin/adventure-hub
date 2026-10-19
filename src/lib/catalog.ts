@@ -14,11 +14,15 @@ const experiences = [
     priceOptions: [{ name: 'Beginner ride', amount: 1600, currency: 'KES', basis: 'per person', inclusions: ['Safety briefing and basic instruction', 'Helmet and safety equipment', 'Short introductory ride'] }],
     bookingEligibility: 'inquiry',
     coverImage: {
-      src: '/images/quad-biking-illustrative.jpg',
-      alt: 'A rider takes an all-terrain vehicle across an open desert landscape',
-      illustrative: true,
+      src: '/images/adventure-hub/images/quad%20bike.jpeg',
+      alt: 'Guests pause with quad bikes at a scenic viewpoint',
     },
-    gallery: [],
+    gallery: [
+      {
+        src: '/images/adventure-hub/images/quad%20bike.jpeg',
+        alt: 'Guests wearing helmets beside quad bikes on an outdoor ride',
+      },
+    ],
     seo: {
       title: 'Quad Biking Experiences | Adventure Hub',
       description: 'Book a beginner quad biking ride at Adventure Hub Longonot from KSh 1,600 per person, subject to availability.',
@@ -57,7 +61,28 @@ const experiences = [
       { name: 'Luxury picnic experience', amount: 4000, currency: 'KES', basis: 'per couple', inclusions: ['Decorated picnic setup', 'Premium snack platter and drinks', 'Flowers and photo opportunities', 'Two-hour experience'] },
     ],
     bookingEligibility: 'inquiry',
-    gallery: [],
+    coverImage: {
+      src: '/images/adventure-hub/images/swimming%20pool.jpeg',
+      alt: 'A garden swimming pool at Adventure Hub Longonot',
+    },
+    gallery: [
+      {
+        src: '/images/adventure-hub/images/hikers%20viewing.jpeg',
+        alt: 'A group enjoying a guided nature outing',
+      },
+      {
+        src: '/images/adventure-hub/images/hikers%20viewing%202.jpeg',
+        alt: 'Hikers taking in the outdoor surroundings',
+      },
+      {
+        src: '/images/adventure-hub/images/farm%20activity%201.jpeg',
+        alt: 'Guests enjoying a farm activity at Adventure Hub Longonot',
+      },
+      {
+        src: '/images/adventure-hub/images/farm%20activity%202.jpeg',
+        alt: 'Visitors taking part in a farm experience at Adventure Hub Longonot',
+      },
+    ],
     seo: {
       title: 'Activities and Experiences | Adventure Hub Longonot',
       description: 'Explore farm, bonfire, pool, sauna, nature, cycling and celebration experiences at Adventure Hub Longonot.',
@@ -103,11 +128,19 @@ const experiences = [
     pricing: { method: 'quote' },
     bookingEligibility: 'inquiry',
     coverImage: {
-      src: '/images/tsavo-savannah-illustrative.jpg',
-      alt: 'An acacia tree at sunset in Tsavo East National Park, Kenya',
-      illustrative: true,
+      src: '/images/adventure-hub/images/Hikers.jpeg',
+      alt: 'A hiker pauses on a green hillside outdoors',
     },
-    gallery: [],
+    gallery: [
+      {
+        src: '/images/adventure-hub/images/hikers%20viewing.jpeg',
+        alt: 'A group enjoying a guided nature outing',
+      },
+      {
+        src: '/images/adventure-hub/images/hikers%20viewing%202.jpeg',
+        alt: 'A hiker looking out over a green outdoor landscape',
+      },
+    ],
     seo: {
       title: 'Nature and Outdoor Adventures | Adventure Hub',
       description: 'Ask Adventure Hub about current nature and outdoor getaway options. Details are confirmed for each inquiry.',
@@ -136,15 +169,29 @@ const stays = [
     bookingEligibility: 'inquiry',
     mealPlans: ['half-board', 'full-board'],
     coverImage: {
-      src: '/images/cabin-exterior-illustrative.jpg',
-      alt: 'A wooden cabin beside a pond, surrounded by trees',
-      illustrative: true,
+      src: '/images/adventure-hub/images/cabin%201.jpeg',
+      alt: 'A-frame cabins set among leafy gardens',
     },
     gallery: [
       {
-        src: '/images/cabin-interior-illustrative.jpg',
-        alt: 'A modern cabin interior opening onto a deck and green forest',
-        illustrative: true,
+        src: '/images/adventure-hub/images/cabin%201.jpeg',
+        alt: 'A-frame cabins set among leafy gardens',
+      },
+      {
+        src: '/images/adventure-hub/images/cabin%202.jpeg',
+        alt: 'The entrance to an A-frame cabin in a leafy garden',
+      },
+      {
+        src: '/images/adventure-hub/images/cabin%20living%20room.jpeg',
+        alt: 'A warm cabin living room surrounded by garden views',
+      },
+      {
+        src: '/images/adventure-hub/images/cabin%20interior.jpeg',
+        alt: 'A covered sitting area looking out onto a garden',
+      },
+      {
+        src: '/images/adventure-hub/images/cabin%20exterior%20scenic%20view.jpeg',
+        alt: 'A peaceful garden seating area outside the cabin',
       },
     ],
     seo: {

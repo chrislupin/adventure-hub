@@ -25,7 +25,6 @@ export function CatalogCard({ entry, href, priority = false }: { entry: CatalogE
           {entry.coverImage ? (
             <>
               <Image src={entry.coverImage.src} alt={entry.coverImage.alt} fill priority={priority} sizes="(min-width: 1280px) 32vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.035]" />
-              {entry.coverImage.illustrative && <span className="absolute bottom-3 left-3 bg-evergreen/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white">Illustrative photo</span>}
             </>
           ) : (
             <div role="img" aria-label="Photo not available" className="flex h-full items-center justify-center bg-[#e8ebe3] px-5 text-center text-sm text-[#59645d]">Image to be added</div>
