@@ -1,0 +1,2 @@
+import { AdminGate } from '@/components/admin/admin-gate'; import { AuditLog } from '@/components/admin/audit-log';
+export default function AuditPage() { return <AdminGate><section><p className="text-xs font-semibold uppercase tracking-[.16em] text-forest">Compliance</p><h1 className="mt-2 font-display text-5xl">Audit log</h1><p className="mt-3 text-sm leading-6 text-[#59645d]">System-recorded administrative activity. Entries are append-only in the application.</p><div className="mt-7"><AuditLog /></div></section></AdminGate>; }

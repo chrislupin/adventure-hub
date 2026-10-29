@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import { DashboardOverview } from '@/components/admin/dashboard-overview';
+import { AdminGate } from '@/components/admin/admin-gate';
 export default function AdminPage() {
-  return <section className="mx-auto max-w-5xl px-6 py-20"><p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#8a7650]">Private area</p><h1 className="mt-3 text-4xl font-semibold">Adventure Hub admin</h1><p className="mt-4 max-w-2xl leading-7 text-[#52635a]">Reserved for the future management dashboard. Before launch, add authentication and role-based access control.</p><div className="mt-8 flex flex-wrap gap-3"><Link className="rounded-full border px-5 py-3" href="/admin/bookings">Bookings</Link><Link className="rounded-full border px-5 py-3" href="/admin/services">Services</Link><Link className="rounded-full border px-5 py-3" href="/admin/packages">Packages</Link></div></section>;
+  return <AdminGate><section><p className="text-xs font-semibold uppercase tracking-[.16em] text-forest">Operations</p><h1 className="mt-2 font-display text-5xl">Dashboard overview</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-[#59645d]">Live totals calculated from saved customer inquiries. Financial metrics are intentionally unavailable until the booking workflow records payment and confirmed prices.</p><div className="mt-7"><DashboardOverview /></div></section></AdminGate>;
 }

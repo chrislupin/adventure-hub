@@ -71,7 +71,7 @@ function newReference(kind: SubmissionKind, date: Date): string {
   return `${prefix}-${day}-${randomBytes(4).toString('hex').toUpperCase()}`;
 }
 
-function getService(slug: string | undefined) {
+async function getService(slug: string | undefined) {
   if (!slug) {
     return {
       id: 'custom-getaway',
@@ -82,7 +82,8 @@ function getService(slug: string | undefined) {
     };
   }
 
-  const entry = getPublishedEntries().find((candidate) => candidate.slug === slug);
+  let entry = getPublishedEntries().find((candidate) => candidate.slug === slug);
+  try { const { getManagedCatalog } = await import('@/lib/server/catalog-store'); entry = (await getManagedCatalog()).find((candidate) => candidate.slug === slug) ?? entry; } catch { /* Local tests and degraded database reads retain the launch catalogue. */ }
   if (!entry) return undefined;
   return { id: entry.id, slug: entry.slug, name: entry.name, category: entry.category, kind: entry.kind };
 }
@@ -175,7 +176,7 @@ export function createSubmissionHandler(kind: SubmissionKind, dependencies: Subm
       const input = parsed.data;
       if ('website' in input && input.website) return jsonResponse({ error: { message: 'Request could not be accepted.' } }, 400);
 
-      const service = getService(input.serviceSlug);
+      const service = await getService(input.serviceSlug);
       if (!service) return jsonResponse({ error: { message: 'This service is no longer available for inquiry.' } }, 404);
 
       const now = dependencies.now?.() ?? new Date();

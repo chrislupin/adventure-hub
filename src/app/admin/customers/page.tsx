@@ -1,0 +1,2 @@
+import { AdminGate } from '@/components/admin/admin-gate'; import { CustomersList } from '@/components/admin/customers-list';
+export default function CustomersPage() { return <AdminGate><section><p className="text-xs font-semibold uppercase tracking-[.16em] text-forest">Private records</p><h1 className="mt-2 font-display text-5xl">Customers</h1><p className="mt-3 text-sm leading-6 text-[#59645d]">Customer contact details are only available to authenticated administrators.</p><div className="mt-7"><CustomersList /></div></section></AdminGate>; }

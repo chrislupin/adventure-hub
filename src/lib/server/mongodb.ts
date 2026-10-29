@@ -22,6 +22,9 @@ class MongoSubmissionStore implements SubmissionStore {
         { unique: true, partialFilterExpression: { idempotencyKey: { $type: 'string' } } },
       ),
       this.submissions.createIndex({ kind: 1, createdAt: -1 }),
+      this.submissions.createIndex({ status: 1, createdAt: -1 }),
+      this.submissions.createIndex({ 'customer.email': 1, createdAt: -1 }),
+      this.submissions.createIndex({ 'customer.phone': 1, createdAt: -1 }),
       this.rateLimits.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 }),
     ]);
   }
@@ -57,13 +60,16 @@ declare global {
   var adventureHubSubmissionStorePromise: Promise<MongoSubmissionStore> | undefined;
 }
 
-export async function getMongoSubmissionStore(): Promise<SubmissionStore> {
+export async function getMongoDatabase(): Promise<Db> {
   const uri = process.env.MONGODB_URI?.trim();
   if (!uri) throw new Error('MONGODB_URI is not configured');
-
   globalThis.adventureHubMongoClientPromise ??= new MongoClient(uri, { maxPoolSize: 10 }).connect();
-  globalThis.adventureHubSubmissionStorePromise ??= globalThis.adventureHubMongoClientPromise.then(async (client) => {
-    const database = client.db(process.env.MONGODB_DB?.trim() || 'adventure_hub');
+  const client = await globalThis.adventureHubMongoClientPromise;
+  return client.db(process.env.MONGODB_DB?.trim() || 'adventure_hub');
+}
+
+export async function getMongoSubmissionStore(): Promise<SubmissionStore> {
+  globalThis.adventureHubSubmissionStorePromise ??= getMongoDatabase().then(async (database) => {
     const store = new MongoSubmissionStore(database);
     await store.ensureIndexes();
     return store;

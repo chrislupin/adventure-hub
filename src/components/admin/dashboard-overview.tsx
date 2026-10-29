@@ -1,0 +1,6 @@
+'use client';
+import { useEffect, useState } from 'react';
+import { Skeleton } from '@/components/ui/primitives';
+type Metrics = { totalBookings: number; received: number; confirmed: number; completed: number; cancelled: number; customers: number; activeServices: number };
+const labels: [keyof Metrics, string][] = [['totalBookings', 'Total inquiries'], ['received', 'Pending'], ['confirmed', 'Confirmed'], ['completed', 'Completed'], ['cancelled', 'Cancelled'], ['customers', 'Customers'], ['activeServices', 'Active services']];
+export function DashboardOverview() { const [data, setData] = useState<Metrics>(); const [error, setError] = useState(''); useEffect(() => { fetch('/api/admin/dashboard').then(async (response) => response.ok ? setData(await response.json()) : setError('Dashboard data could not be loaded.')).catch(() => setError('Dashboard data could not be loaded.')); }, []); if (error) return <p role="alert" className="border border-[#a2352a]/30 bg-[#a2352a]/5 p-4 text-sm text-[#842b22]">{error}</p>; return <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{labels.map(([key, label]) => <article key={key} className="border border-[#deded3] bg-white p-5"><p className="text-sm text-[#59645d]">{label}</p>{data ? <p className="mt-2 font-display text-4xl text-charcoal">{data[key]}</p> : <Skeleton className="mt-3 h-10 w-20" />}</article>)}</div>; }

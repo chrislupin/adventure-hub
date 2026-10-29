@@ -230,6 +230,9 @@ const packages: readonly PackageEntry[] = [];
 
 const entries: readonly CatalogEntry[] = [...experiences, ...stays, ...transport, ...packages];
 
+/** Source-controlled launch catalogue, used only to seed MongoDB and as a safe read fallback. */
+export function getCatalogEntries(): readonly CatalogEntry[] { return entries; }
+
 export function getPublishedEntries(kind?: CatalogEntry['kind']): readonly CatalogEntry[] {
   return entries.filter((entry) => entry.status === 'published' && (!kind || entry.kind === kind));
 }

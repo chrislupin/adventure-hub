@@ -1,13 +1,17 @@
 import type { CatalogEntry } from '@/types/catalog';
 
 export type SubmissionKind = 'inquiry' | 'quotation';
+export type BookingStatus = 'received' | 'confirmed' | 'checked_in' | 'completed' | 'cancelled';
 
 export type PersistedSubmission = {
   reference: string;
   idempotencyKey: string;
   kind: SubmissionKind;
-  status: 'received';
+  status: BookingStatus;
   createdAt: Date;
+  updatedAt?: Date;
+  adminNotes?: string;
+  cancellationReason?: string;
   service: {
     id: string;
     slug: string;

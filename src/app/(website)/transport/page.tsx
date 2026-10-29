@@ -2,22 +2,24 @@ import type { Metadata } from 'next';
 import { TransportQuoteForm } from '@/components/services/transport-quote-form';
 import { ServiceCatalogPage } from '@/components/services/service-catalog-page';
 import { Container, SectionHeading } from '@/components/ui/primitives';
-import { getPublishedTransport } from '@/lib/catalog';
+import { getManagedCatalog } from '@/lib/server/catalog-store';
 
 export const metadata: Metadata = {
 	title: 'Chauffeur and Private Transport | Adventure Hub',
 	description: 'Request a chauffeur and private transport quotation. Share pickup, destination, date, time, passenger count and luggage needs.',
 	alternates: { canonical: '/transport' },
 };
+export const dynamic = 'force-dynamic';
 
-export default function TransportPage() {
+export default async function TransportPage() {
+  const entries = (await getManagedCatalog()).filter((entry) => entry.kind === 'transport');
 	return (
 		<>
 			<ServiceCatalogPage
 				eyebrow="Private transport"
 				title="The journey is part of the getaway."
 				description="Ask about chauffeur and private transport for your plans. Vehicle categories, service coverage, availability and fares are confirmed by quotation; none are assumed here."
-				entries={getPublishedTransport()}
+			entries={entries}
 				detailPath="/transport"
 				searchLabel="Search transport services"
 				emptyTitle="No transport services are listed yet"
